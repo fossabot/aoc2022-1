@@ -1,18 +1,15 @@
 name: ci
 
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
+on: [push, pull_request]
 
 jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
-        julia-version: ['1.0', '1', 'nightly']
-        julia-arch: [x64, x86]
+        version: ['1.0', '1', 'nightly']
+        arch: [x64, x86]
         os: [ubuntu-latest, windows-latest, macOS-latest]
         exclude:
           - os: macOS-latest
