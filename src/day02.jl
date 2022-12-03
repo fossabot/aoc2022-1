@@ -6,15 +6,15 @@ struct Rock <: Shape end
 struct Paper <: Shape end
 struct Scissors <: Shape end
 
-Base.Integer(T::Type{<:Shape}) = Integer(T())
-Base.Integer(::Rock) = 1
-Base.Integer(::Paper) = 2
-Base.Integer(::Scissors) = 3
-
 abstract type Move end
 struct Lose <: Move end
 struct Win <: Move end
 struct Draw <: Move end
+
+Base.Integer(T::Type{<:Shape}) = Integer(T())
+Base.Integer(::Rock) = 1
+Base.Integer(::Paper) = 2
+Base.Integer(::Scissors) = 3
 
 function read_strategy_file(path::AbstractString)
     strategy = Vector{Tuple{Char, Char}}()

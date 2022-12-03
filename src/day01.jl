@@ -20,16 +20,17 @@ function read_calory_file(path::AbstractString)
 end
 
 function part1()
-    calories = read_calory_file("data/day1.txt")
-    calories = map(sum, calories)
-    maximum(calories)
+    read_calory_file("data/day1.txt") .|>
+        sum |>
+        maximum
 end
 
 function part2()
-    calories = read_calory_file("data/day1.txt")
-    calories = map(sum, calories)
-    calories = sort(calories, rev=true)
-    sum(calories[1:3])
+    calories = read_calory_file("data/day1.txt") .|>
+        sum |>
+        sort
+
+    sum(calories[end - 2:end])
 end
 
 end
